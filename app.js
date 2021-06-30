@@ -11,13 +11,13 @@ d3.json("data/samples.json").then((data) => {
       // corresponding value returned by the button
       .attr("value", function (d) { return d; })
 
-    // A function that update the chart
+    // A function that updates the chart
     function update(selectedGroup) {
 
-        // Create new data with the selection?
+        // Create new data with the selection
         var dataFilter = data.map(function(d){return {time: d.time, value:d[selectedGroup]} })
   
-        // Give these new data to update line
+        // Update graph
         line
             .datum(dataFilter)
             .transition()
@@ -26,11 +26,12 @@ d3.json("data/samples.json").then((data) => {
               .x(function(d) { return x(+d.time) })
               .y(function(d) { return y(+d.value) })
             )}
-    // When the button is changed, run the updateChart function
-    d3.select("#selectButton").on("change", function(d) {
+
+    // When the button is changed, run the update function
+    d3.select("#selDataset").on("change", function(d) {
         // recover the option that has been chosen
         var selectedOption = d3.select(this).property("value")
-        // run the updateChart function with this selected option
+        // run the update function with this selected option
         update(selectedOption)
 
         // Enter metadata by matching id
