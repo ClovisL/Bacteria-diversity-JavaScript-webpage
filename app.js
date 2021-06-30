@@ -24,7 +24,7 @@ d3.json("data/samples.json").then((data) => {
             .attr("d", d3.line()
               .x(function(d) { return x(+d.time) })
               .y(function(d) { return y(+d.value) })
-            )}
+            )};
 
     // When the button is changed, run the update function
     d3.select("#selDataset").on("change", function(d) {
@@ -33,37 +33,20 @@ d3.json("data/samples.json").then((data) => {
         // run the update function with this selected option
         update(selectedOption)
 
-        // Enter metadata by matching id
-        idMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.id)
-        ethMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.ethnicity)
-        genderMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.gender)
-        ageMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.age)
-        locMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.location)
-        bbMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.bbtype)
-        freqMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.wfreq)
-        // Add data to box
-        let ele = document.getElementById("sample-metadata");
-        ele.innerHTML += "id: " + idMatch + "<br />";
-        ele.innerHTML += "ethnicity: " + ethMatch + "<br />";
-        ele.innerHTML += "gender: " + genderMatch + "<br />";
-        ele.innerHTML += "age: " + ageMatch + "<br />";
-        ele.innerHTML += "location: " + locMatch + "<br />";
-        ele.innerHTML += "bbtype: " + bbMatch + "<br />";
-        ele.innerHTML += "wfreq: " + freqMatch;
-        ele.innerHTML += "testing inside button";
-    })
+    });
 
-    // Enter metadata by matching id
-    idMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.id)
-    ethMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.ethnicity)
-    genderMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.gender)
-    ageMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.age)
-    locMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.location)
-    bbMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.bbtype)
-    freqMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.wfreq)
-    
+    // Enter metadata by matching index of metadata with index of names
+    var index = document.getElementById(selDataset).selectedIndex;
+    metaSlice = data.metadata[index];
+    idMatch = metaSlice["id"];
+    ethMatch = "";
+    genderMatch = "";
+    ageMatch = "";
+    locMatch = "";
+    bbMatch = "";
+    freqMatch = "";
+    // Enter data into text box
     let ele = document.getElementById("sample-metadata");
-    ele.innerHTML += "testing outside button";
     ele.innerHTML += "id: " + idMatch + "<br />";
     ele.innerHTML += "ethnicity: " + ethMatch + "<br />";
     ele.innerHTML += "gender: " + genderMatch + "<br />";
@@ -71,6 +54,7 @@ d3.json("data/samples.json").then((data) => {
     ele.innerHTML += "location: " + locMatch + "<br />";
     ele.innerHTML += "bbtype: " + bbMatch + "<br />";
     ele.innerHTML += "wfreq: " + freqMatch;
+    ele.innerHTML += "<br />"+"testing outside button";
 
     //  Create the Traces
   var trace1 = {
