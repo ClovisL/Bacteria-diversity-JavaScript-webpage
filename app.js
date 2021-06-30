@@ -2,6 +2,8 @@
 d3.json("data/samples.json").then((data) => {
     var groupNames = data.names
     var groupMetadata = data.metadata
+});
+
     // Displays the currect selection in the dropdownlist
     d3.select("#selDataset")
       .selectAll("myOptions")
@@ -96,4 +98,3 @@ d3.json("data/samples.json").then((data) => {
 
   // Plot the chart to a div tag with id "plot"
   Plotly.newPlot("plot", chartData, layout);
-});
