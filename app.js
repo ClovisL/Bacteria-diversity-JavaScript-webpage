@@ -52,6 +52,23 @@ d3.json("data/samples.json").then((data) => {
         ele.innerHTML += "wfreq: " + freqMatch;
     })
 
+    // Enter metadata by matching id
+    idMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.id)
+    ethMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.ethnicity)
+    genderMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.gender)
+    ageMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.age)
+    locMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.location)
+    bbMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.bbtype)
+    freqMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.wfreq)
+    
+    let ele = document.getElementById("sample-metadata");
+    ele.innerHTML += "id: " + idMatch + "<br />";
+    ele.innerHTML += "ethnicity: " + ethMatch + "<br />";
+    ele.innerHTML += "gender: " + genderMatch + "<br />";
+    ele.innerHTML += "age: " + ageMatch + "<br />";
+    ele.innerHTML += "location: " + locMatch + "<br />";
+    ele.innerHTML += "bbtype: " + bbMatch + "<br />";
+    ele.innerHTML += "wfreq: " + freqMatch;
 
     //  Create the Traces
   var trace1 = {
