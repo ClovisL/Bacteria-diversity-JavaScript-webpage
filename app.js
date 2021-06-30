@@ -13,7 +13,6 @@ d3.json("data/samples.json").then((data) => {
 
     // A function that updates the chart
     function update(selectedGroup) {
-
         // Create new data with the selection
         var dataFilter = data.map(function(d){return {time: d.time, value:d[selectedGroup]} })
   
@@ -64,7 +63,7 @@ d3.json("data/samples.json").then((data) => {
     freqMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.wfreq)
     
     let ele = document.getElementById("sample-metadata");
-    ele.innterHTML += "testing outside button";
+    ele.innerHTML += "testing outside button";
     ele.innerHTML += "id: " + idMatch + "<br />";
     ele.innerHTML += "ethnicity: " + ethMatch + "<br />";
     ele.innerHTML += "gender: " + genderMatch + "<br />";
