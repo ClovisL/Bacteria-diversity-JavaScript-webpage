@@ -38,7 +38,9 @@ d3.json("data/samples.json").then((data) => {
     // Updates all information on page
     function optionChanged(boxId) {
         // Delete text in box to create new text
-        document.getElementById("sample-metadata").innerHTML = "";
+        // document.getElementById("sample-metadata").innerHTML = "";
+        let ele = d3.select("sample-metadata");
+        ele.innerHTML = ""
         // Get index of selected option and use it to get metadeta dictionary
         var index = groupNames.indexOf(boxId);
         var metaSlice = groupMetadata[index];
@@ -52,7 +54,6 @@ d3.json("data/samples.json").then((data) => {
         freqMatch = metaSlice["wfreq"];
         // Enter data into text box
         // let ele = document.getElementById("sample-metadata");
-        let ele = d3.select("#sample-metadata");
         ele.innerHTML += "id: " + idMatch + "<br />";
         ele.innerHTML += "ethnicity: " + ethMatch + "<br />";
         ele.innerHTML += "gender: " + genderMatch + "<br />";
