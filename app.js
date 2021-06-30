@@ -15,7 +15,7 @@ d3.json("data/samples.json").then((data) => {
 
     // Default metadata for the first option on the list
     var defaultId = document.getElementById("selDataset").value;
-    var defaultSlice = metadata[names.indexOf(defaultId)];
+    var defaultSlice = groupMetadata[groupNames.indexOf(defaultId)];
     idMatch = defaultId;
     ethMatch = defaultSlice["ethnicity"];
     genderMatch = defaultSlice["gender"];
