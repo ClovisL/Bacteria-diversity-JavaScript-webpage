@@ -1,9 +1,9 @@
+var groupNames
+var groupMetadata
 // Use d3.json() to fetch data from JSON file
 d3.json("data/samples.json").then((data) => {
-    var groupNames = data.names
-    var groupMetadata = data.metadata
-});
-
+    groupNames = data.names
+    groupMetadata = data.metadata
     // Displays the currect selection in the dropdownlist
     d3.select("#selDataset")
       .selectAll("myOptions")
@@ -36,39 +36,6 @@ d3.json("data/samples.json").then((data) => {
     ele.innerHTML += "wfreq: " + freqMatch;
     ele.innerHTML += "<br />"+"testing outside button"+"<br />"
 
-    // Function for when an option is selected in the dropdownlist
-    // Updates all information on page
-    function optionChanged(boxId) {
-        // Delete text in box to create new text
-        // document.getElementById("sample-metadata").innerHTML = "";
-        let ele = d3.select("sample-metadata");
-        ele.innerHTML = ""
-        // Get index of selected option and use it to get metadeta dictionary
-        var index = groupNames.indexOf(boxId);
-        var metaSlice = groupMetadata[index];
-        // Get values of data from dictionary
-        idMatch = metaSlice["id"];
-        ethMatch = metaSlice["ethnicity"];
-        genderMatch = metaSlice["gender"];
-        ageMatch = metaSlice["age"];
-        locMatch = metaSlice["location"];
-        bbMatch = metaSlice["bbtype"];
-        freqMatch = metaSlice["wfreq"];
-        // Enter data into text box
-        // let ele = document.getElementById("sample-metadata");
-        ele.innerHTML += "id: " + idMatch + "<br />";
-        ele.innerHTML += "ethnicity: " + ethMatch + "<br />";
-        ele.innerHTML += "gender: " + genderMatch + "<br />";
-        ele.innerHTML += "age: " + ageMatch + "<br />";
-        ele.innerHTML += "location: " + locMatch + "<br />";
-        ele.innerHTML += "bbtype: " + bbMatch + "<br />";
-        ele.innerHTML += "wfreq: " + freqMatch;
-        ele.innerHTML += "<br />"+"testing inside button"+"<br />"
-    };
-
-
-
-
     // Plot
 
 
@@ -98,3 +65,33 @@ d3.json("data/samples.json").then((data) => {
 
   // Plot the chart to a div tag with id "plot"
   Plotly.newPlot("plot", chartData, layout);
+});
+
+
+// Function for when an option is selected in the dropdownlist
+// Updates all information on page
+function optionChanged(boxId) {
+    // Delete text in box to create new text
+    document.getElementById("sample-metadata").innerHTML = "";
+    // Get index of selected option and use it to get metadeta dictionary
+    var index = groupNames.indexOf(boxId);
+    var metaSlice = groupMetadata[index];
+    // Get values of data from dictionary
+    idMatch = metaSlice["id"];
+    ethMatch = metaSlice["ethnicity"];
+    genderMatch = metaSlice["gender"];
+    ageMatch = metaSlice["age"];
+    locMatch = metaSlice["location"];
+    bbMatch = metaSlice["bbtype"];
+    freqMatch = metaSlice["wfreq"];
+    // Enter data into text box
+    let ele = document.getElementById("sample-metadata");
+    ele.innerHTML += "id: " + idMatch + "<br />";
+    ele.innerHTML += "ethnicity: " + ethMatch + "<br />";
+    ele.innerHTML += "gender: " + genderMatch + "<br />";
+    ele.innerHTML += "age: " + ageMatch + "<br />";
+    ele.innerHTML += "location: " + locMatch + "<br />";
+    ele.innerHTML += "bbtype: " + bbMatch + "<br />";
+    ele.innerHTML += "wfreq: " + freqMatch;
+    ele.innerHTML += "<br />"+"testing inside button"+"<br />"
+};
