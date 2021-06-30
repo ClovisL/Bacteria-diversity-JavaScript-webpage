@@ -36,9 +36,9 @@ d3.json("data/samples.json").then((data) => {
     });
 
     // Enter metadata by matching index of metadata with index of names
-    var index = document.getElementById(selDataset).selectedIndex;
-    metaSlice = data.metadata[index];
-    idMatch = metaSlice["id"];
+   // var index = document.getElementById(selDataset).selectedIndex;
+  //  metaSlice = data.metadata[index];
+  //  idMatch = metaSlice["id"];
     ethMatch = "";
     genderMatch = "";
     ageMatch = "";
@@ -47,7 +47,7 @@ d3.json("data/samples.json").then((data) => {
     freqMatch = "";
     // Enter data into text box
     let ele = document.getElementById("sample-metadata");
-    ele.innerHTML += "id: " + idMatch + "<br />";
+  //  ele.innerHTML += "id: " + idMatch + "<br />";
     ele.innerHTML += "ethnicity: " + ethMatch + "<br />";
     ele.innerHTML += "gender: " + genderMatch + "<br />";
     ele.innerHTML += "age: " + ageMatch + "<br />";
