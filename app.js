@@ -51,7 +51,8 @@ d3.json("data/samples.json").then((data) => {
         bbMatch = metaSlice["bbtype"];
         freqMatch = metaSlice["wfreq"];
         // Enter data into text box
-        let ele = document.getElementById("sample-metadata");
+        // let ele = document.getElementById("sample-metadata");
+        let ele = d3.select("#sample-metadata");
         ele.innerHTML += "id: " + idMatch + "<br />";
         ele.innerHTML += "ethnicity: " + ethMatch + "<br />";
         ele.innerHTML += "gender: " + genderMatch + "<br />";
