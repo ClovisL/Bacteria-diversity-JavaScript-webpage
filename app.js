@@ -41,7 +41,7 @@ d3.json("data/samples.json").then((data) => {
         locMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.location)
         bbMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.bbtype)
         freqMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.wfreq)
-        
+        // Add data to box
         let ele = document.getElementById("sample-metadata");
         ele.innerHTML += "id: " + idMatch + "<br />";
         ele.innerHTML += "ethnicity: " + ethMatch + "<br />";
@@ -50,6 +50,7 @@ d3.json("data/samples.json").then((data) => {
         ele.innerHTML += "location: " + locMatch + "<br />";
         ele.innerHTML += "bbtype: " + bbMatch + "<br />";
         ele.innerHTML += "wfreq: " + freqMatch;
+        ele.innerHTML += "testing inside button";
     })
 
     // Enter metadata by matching id
@@ -62,6 +63,7 @@ d3.json("data/samples.json").then((data) => {
     freqMatch = data.metadata.filter(g => data.names.includes(g.id)).map(g => g.wfreq)
     
     let ele = document.getElementById("sample-metadata");
+    ele.innterHTML += "testing outside button";
     ele.innerHTML += "id: " + idMatch + "<br />";
     ele.innerHTML += "ethnicity: " + ethMatch + "<br />";
     ele.innerHTML += "gender: " + genderMatch + "<br />";
