@@ -32,6 +32,7 @@ d3.json("data/samples.json").then((data) => {
     ele.innerHTML += "location: " + locMatch + "<br />";
     ele.innerHTML += "bbtype: " + bbMatch + "<br />";
     ele.innerHTML += "wfreq: " + freqMatch;
+    ele.innerHTML += "<br />"+"testing outside button"+"<br />"
 
     // Function for when an option is selected in the dropdownlist
     // Updates all information on page
@@ -58,6 +59,7 @@ d3.json("data/samples.json").then((data) => {
         ele.innerHTML += "location: " + locMatch + "<br />";
         ele.innerHTML += "bbtype: " + bbMatch + "<br />";
         ele.innerHTML += "wfreq: " + freqMatch;
+        ele.innerHTML += "<br />"+"testing inside button"+"<br />"
     };
 
 
