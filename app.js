@@ -11,70 +11,30 @@ d3.json("data/samples.json").then((data) => {
       // corresponding value returned by the button
       .attr("value", function (d) { return d; })
 
-    // A function that updates the chart
-    function update(selectedGroup) {
-        // Create new data with the selection
-        var dataFilter = data.map(function(d){return {time: d.time, value:d[selectedGroup]} })
-  
-        // Update graph
-        line
-            .datum(dataFilter)
-            .transition()
-            .duration(1000)
-            .attr("d", d3.line()
-              .x(function(d) { return x(+d.time) })
-              .y(function(d) { return y(+d.value) })
-            )};
-
-    // When the selection is changed, run the update function
-    d3.select("#selDataset").on("change", function(d) {
-        // recover the option that has been chosen
-        var selectedOption = d3.select(this).property("value")
-        // run the update function with this selected option
-        update(selectedOption)
-
-        // Enter metadata by matching index of metadata with index of names
-   // var index = document.getElementById(selDataset).selectedIndex;
-  //  metaSlice = data.metadata[index];
-  //  idMatch = metaSlice["id"];
-    ethMatch = "";
-    genderMatch = "";
-    ageMatch = "";
-    locMatch = "";
-    bbMatch = "";
-    freqMatch = "";
-    // Enter data into text box
-    let ele = document.getElementById("sample-metadata");
-  //  ele.innerHTML += "id: " + idMatch + "<br />";
-    ele.innerHTML += "ethnicity: " + ethMatch + "<br />";
-    ele.innerHTML += "gender: " + genderMatch + "<br />";
-    ele.innerHTML += "age: " + ageMatch + "<br />";
-    ele.innerHTML += "location: " + locMatch + "<br />";
-    ele.innerHTML += "bbtype: " + bbMatch + "<br />";
-    ele.innerHTML += "wfreq: " + freqMatch;
-    ele.innerHTML += "<br />"+"testing inside button";
-    });
-
-    // Enter metadata by matching index of metadata with index of names
-   // var index = document.getElementById(selDataset).selectedIndex;
-  //  metaSlice = data.metadata[index];
-  //  idMatch = metaSlice["id"];
-    ethMatch = "";
-    genderMatch = "";
-    ageMatch = "";
-    locMatch = "";
-    bbMatch = "";
-    freqMatch = "";
-    // Enter data into text box
-    let ele = document.getElementById("sample-metadata");
-  //  ele.innerHTML += "id: " + idMatch + "<br />";
-    ele.innerHTML += "ethnicity: " + ethMatch + "<br />";
-    ele.innerHTML += "gender: " + genderMatch + "<br />";
-    ele.innerHTML += "age: " + ageMatch + "<br />";
-    ele.innerHTML += "location: " + locMatch + "<br />";
-    ele.innerHTML += "bbtype: " + bbMatch + "<br />";
-    ele.innerHTML += "wfreq: " + freqMatch;
-    ele.innerHTML += "<br />"+"testing outside button";
+    function optionChanged(boxId) {
+        // Delete text in box to create new text
+        document.getElementById("sample-metadata").innerHTML = "";
+        // Get index of selected option and use it to get metadeta dictionary
+        var index = data.names.indexOf(boxId)
+        var metaSlice = data.metadata[index]
+        // Get values of data from dictionary
+        idMatch = metaSlice["id"];
+        ethMatch = metaSlice["ethnicity"];
+        genderMatch = metaSlice["gender"];
+        ageMatch = metaSlice["age"];
+        locMatch = metaSlice["location"];
+        bbMatch = metaSlice["bbtype"];
+        freqMatch = metaSlice["wfreq"];
+        // Enter data into text box
+        let ele = document.getElementById("sample-metadata");
+        ele.innerHTML += "id: " + idMatch + "<br />";
+        ele.innerHTML += "ethnicity: " + ethMatch + "<br />";
+        ele.innerHTML += "gender: " + genderMatch + "<br />";
+        ele.innerHTML += "age: " + ageMatch + "<br />";
+        ele.innerHTML += "location: " + locMatch + "<br />";
+        ele.innerHTML += "bbtype: " + bbMatch + "<br />";
+        ele.innerHTML += "wfreq: " + freqMatch;
+    };
 
     //  Create the Traces
   var trace1 = {
