@@ -1,6 +1,7 @@
 // Use d3.json() to fetch data from JSON file
 d3.json("data/samples.json").then((data) => {
     var groupNames = data.names
+    var groupMetadata = data.metadata
     d3.select("#selDataset")
       .selectAll("myOptions")
      	.data(groupNames)
@@ -15,8 +16,8 @@ d3.json("data/samples.json").then((data) => {
         // Delete text in box to create new text
         document.getElementById("sample-metadata").innerHTML = "";
         // Get index of selected option and use it to get metadeta dictionary
-        var index = data.names.indexOf(boxId)
-        var metaSlice = data.metadata[index]
+        var index = groupNames.indexOf(boxId);
+        var metaSlice = groupMetadata[index];
         // Get values of data from dictionary
         idMatch = metaSlice["id"];
         ethMatch = metaSlice["ethnicity"];
