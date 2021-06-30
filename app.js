@@ -2,6 +2,7 @@
 d3.json("data/samples.json").then((data) => {
     var groupNames = data.names
     var groupMetadata = data.metadata
+    // Displays the currect selection in the dropdownlist
     d3.select("#selDataset")
       .selectAll("myOptions")
      	.data(groupNames)
@@ -12,6 +13,28 @@ d3.json("data/samples.json").then((data) => {
       // corresponding value returned by the button
       .attr("value", function (d) { return d; })
 
+    // Default metadata for the first option on the list
+    var defaultId = document.getElementById("selDataset").value;
+    var defaultSlice = metadata[names.indexOf(defaultId)];
+    idMatch = defaultId;
+    ethMatch = defaultSlice["ethnicity"];
+    genderMatch = defaultSlice["gender"];
+    ageMatch = defaultSlice["age"];
+    locMatch = defaultSlice["location"];
+    bbMatch = defaultSlice["bbtype"];
+    freqMatch = defaultSlice["wfreq"];
+    // Enter data into text box
+    let ele = document.getElementById("sample-metadata");
+    ele.innerHTML += "id: " + idMatch + "<br />";
+    ele.innerHTML += "ethnicity: " + ethMatch + "<br />";
+    ele.innerHTML += "gender: " + genderMatch + "<br />";
+    ele.innerHTML += "age: " + ageMatch + "<br />";
+    ele.innerHTML += "location: " + locMatch + "<br />";
+    ele.innerHTML += "bbtype: " + bbMatch + "<br />";
+    ele.innerHTML += "wfreq: " + freqMatch;
+
+    // Function for when an option is selected in the dropdownlist
+    // Updates all information on page
     function optionChanged(boxId) {
         // Delete text in box to create new text
         document.getElementById("sample-metadata").innerHTML = "";
@@ -37,8 +60,14 @@ d3.json("data/samples.json").then((data) => {
         ele.innerHTML += "wfreq: " + freqMatch;
     };
 
+
+
+
+    // Plot
+
+
     //  Create the Traces
-  var trace1 = {
+    var trace1 = {
     x: data.map(row => row.sample.otu_ids),
     y: data.map(row => row.sample.sample_values),
     text: data.map(row => row.samples.otu_labels),
