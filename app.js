@@ -1,14 +1,15 @@
 // Use d3.json() to fetch data from JSON file
 d3.json("data/samples.json").then((data) => {
-    let selector = d3.select("#selDataset");
-    let sampleNames = data.map(ele => ele.names);
-            
-    sampleNames.forEach((sample) => {
-        selector
-            .append("option")
-            .text(sample)
-            .property("value", sample);
-    });
+    var groupNames = data.names
+    d3.select("#selDataset")
+      .selectAll("myOptions")
+     	.data(groupNames)
+      .enter()
+    	.append('option')
+        // text showed in the menu
+      .text(function (d) { return d; }) 
+      // corresponding value returned by the button
+      .attr("value", function (d) { return d; }) 
 
     //  Create the Traces
   var trace1 = {
