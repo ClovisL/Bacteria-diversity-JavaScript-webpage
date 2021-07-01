@@ -99,4 +99,34 @@ function optionChanged(boxId) {
     ele.innerHTML += "location: " + locMatch + "<br />";
     ele.innerHTML += "bbtype: " + bbMatch + "<br />";
     ele.innerHTML += "wfreq: " + freqMatch;
+
+    // Update plot with new ID
+    // Create the Traces
+    var sample = groupSamples[index];
+    var trace1 = {
+    x: sample["sample_values"].slice(0, 10).reverse(),
+    y: sample["otu_ids"].slice(0, 10).reverse().map(String),
+    text: sample["otu_labels"].slice(0, 10).reverse(),
+    name: "Bacteria Samples",
+    type: "bar",
+    orientation: "h",
+    };
+
+    // Create the data array for the plot
+    var chartData = [trace1];
+
+    // Define the plot layout
+    var layout = {
+        title: "Top 10 Bacteria Cultures Found",
+        //margin: {
+        //    l: 250,
+        //    r: 250,
+        //    t: 50,
+        //    b: 50
+        //},
+        yaxis:{"type": "category", "title": "OTU ID"}
+    };
+
+    // Plot the chart to a div tag with id "plot"
+    Plotly.newPlot("bar", chartData, layout);
 };
