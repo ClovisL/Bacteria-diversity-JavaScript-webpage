@@ -46,7 +46,7 @@ d3.json("data/samples.json").then((data) => {
     var defaultSample = groupSamples[groupNames.indexOf(defaultId)];
     var trace1 = {
     x: defaultSample["sample_values"].slice(0, 10).reverse(),
-    y: "OTU " + defaultSample["otu_ids"].slice(0, 10).reverse(),
+    y: defaultSample["otu_ids"].slice(0, 10).reverse().map(String),
     text: defaultSample["otu_labels"].slice(0, 10).reverse(),
     name: "Bacteria Samples",
     type: "bar",
@@ -58,13 +58,14 @@ d3.json("data/samples.json").then((data) => {
 
     // Define the plot layout
     var layout = {
-    title: "Top 10 Bacteria Cultures Found",
-    margin: {
-        l: 250,
-        r: 250,
-        t: 50,
-        b: 50
-    }
+        title: "Top 10 Bacteria Cultures Found",
+        margin: {
+            l: 250,
+            r: 250,
+            t: 50,
+            b: 50
+        },
+        yaxis:{'type': 'category'}
     };
 
     // Plot the chart to a div tag with id "plot"
