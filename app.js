@@ -48,8 +48,8 @@ d3.json("data/samples.json").then((data) => {
 
     //  Create the Traces
     var trace1 = {
-        x: data.samples.map(row => row.otu_ids),
-        y: data.samples.map(row => row.sample_values),
+        x: data.samples.map(row => row.sample_values),
+        y: data.samples.map(row => row.otu_ids),
         text: data.samples.map(row => row.otu_labels),
         name: "Bacteria Samples",
         type: "bar",
@@ -71,7 +71,7 @@ d3.json("data/samples.json").then((data) => {
       };
     
       // Plot the chart to a div tag with id "plot"
-      Plotly.newPlot("plot", chartData, layout);
+      Plotly.newPlot("bar", chartData, layout);
         
 
 });
