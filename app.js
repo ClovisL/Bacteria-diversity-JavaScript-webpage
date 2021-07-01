@@ -59,13 +59,13 @@ d3.json("data/samples.json").then((data) => {
     // Define the plot layout
     var layout = {
         title: "Top 10 Bacteria Cultures Found",
-        margin: {
-            l: 250,
-            r: 250,
-            t: 50,
-            b: 50
-        },
-        yaxis:{'type': 'category'}
+        //margin: {
+        //    l: 250,
+        //    r: 250,
+        //    t: 50,
+        //    b: 50
+        //},
+        yaxis:{"type": "category", "title": "OTU ID"}
     };
 
     // Plot the chart to a div tag with id "plot"
