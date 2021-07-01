@@ -70,14 +70,14 @@ d3.json("data/samples.json").then((data) => {
 
     // Default bubble plot
     var trace2 = {
-        x: defaultSample["otu_ids"].slice(0, 10).reverse().map(String),
-        y: defaultSample["sample_values"].slice(0, 10).reverse(),
-        text: defaultSample["otu_labels"].slice(0, 10).reverse(),
+        x: defaultSample["otu_ids"].reverse().map(String),
+        y: defaultSample["sample_values"].reverse(),
+        text: defaultSample["otu_labels"].reverse(),
         title: "Bacteria Cultures Per Sample",
         mode: 'markers',
         marker: {
-            color: defaultSample["otu_ids"].slice(0, 10).reverse().map(String),
-            size: defaultSample["sample_values"].slice(0, 10).reverse()
+            color: defaultSample["otu_ids"].reverse().map(String),
+            size: defaultSample["sample_values"].reverse()
         }
     };
     
@@ -150,14 +150,14 @@ function optionChanged(boxId) {
 
     // Bubble plot
     var trace2 = {
-        x: sample["otu_ids"].slice(0, 10).reverse().map(String),
-        y: sample["sample_values"].slice(0, 10).reverse(),
-        text: sample["otu_labels"].slice(0, 10).reverse(),
+        x: sample["otu_ids"].reverse().map(String),
+        y: sample["sample_values"].reverse(),
+        text: sample["otu_labels"].reverse(),
         title: "Bacteria Cultures Per Sample",
         mode: 'markers',
         marker: {
-            color: sample["otu_ids"].slice(0, 10).reverse().map(String),
-            size: sample["sample_values"].slice(0, 10).reverse()
+            color: sample["otu_ids"].reverse().map(String),
+            size: sample["sample_values"].reverse()
         }
     };
     
