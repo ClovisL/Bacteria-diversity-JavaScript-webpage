@@ -1,10 +1,12 @@
 // Initialize array variables
 var groupNames
 var groupMetadata
+var groupSamples
 // Use d3.json() to fetch data from JSON file
 d3.json("data/samples.json").then((data) => {
     groupNames = data.names
     groupMetadata = data.metadata
+    groupSamples = data.samples
     // Displays the currect selection in the dropdownlist
     d3.select("#selDataset")
       .selectAll("myOptions")
@@ -41,7 +43,7 @@ d3.json("data/samples.json").then((data) => {
     // Plot for default option
 
     // Create the Traces
-    var defaultSample = samples[names.indexOf(defaultId)];
+    var defaultSample = groupSamples[groupNames.indexOf(defaultId)];
     var trace1 = {
     x: defaultSample["sample_values"].slice(0, 10).reverse(),
     y: "OTU " + defaultSample["otu_ids"].slice(0, 10).reverse(),
