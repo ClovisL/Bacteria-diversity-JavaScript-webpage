@@ -93,7 +93,38 @@ d3.json("data/samples.json").then((data) => {
     // Plot the chart to a div tag with id "bubble"
     Plotly.newPlot("bubble", bubbleData, layout2);
 
-    });
+    // Gauge
+    var gaugeData = [{
+            domain: { x: [0, 1], y: [0, 1] },
+            value: freqMatch,
+            title: "<b>Belly Button Washing Frequency</b><br />Scrubs Per Week",
+            type: "indicator",
+            mode: "gauge",
+        gauge: {
+            axis: { range: [null, 9] },
+            steps: [
+                { range: [0, 1], color: "#EBF3F5" },
+                { range: [1, 2], color: "#D5E7EA" },
+                { range: [2, 3], color: "#C3E4EA" },
+                { range: [3, 4], color: "#A0D8E1" },
+                { range: [4, 5], color: "#8BD1DC" },
+                { range: [5, 6], color: "#71C5D3" },
+                { range: [6, 7], color: "#59BBCB" },
+                { range: [7, 8], color: "#45B0C1" },
+                { range: [8, 9], color: "#269CAF" }
+            ],
+            threshold: {
+                line: { color: "purple", width: 8 },
+                thickness: 0.75,
+                value: freqMatch
+            }
+        }
+    }];
+
+    var layout3 = { width: 600, height: 500, margin: { t: 0, b: 0 } };
+    Plotly.newPlot('gauge', gaugeData, layout3);
+
+        });
 
 
 // Function for when an option is selected in the dropdownlist
@@ -172,4 +203,37 @@ function optionChanged(boxId) {
     
     // Plot the chart to a div tag with id "bubble"
     Plotly.newPlot("bubble", bubbleData, layout2);
+
+
+    // Gauge
+    var gaugeData = [{
+        domain: { x: [0, 1], y: [0, 1] },
+        value: freqMatch,
+        title: "<b>Belly Button Washing Frequency</b><br />Scrubs Per Week",
+        type: "indicator",
+        mode: "gauge",
+        gauge: {
+            axis: { range: [null, 9] },
+            steps: [
+                { range: [0, 1], color: "#EBF3F5" },
+                { range: [1, 2], color: "#D5E7EA" },
+                { range: [2, 3], color: "#C3E4EA" },
+                { range: [3, 4], color: "#A0D8E1" },
+                { range: [4, 5], color: "#8BD1DC" },
+                { range: [5, 6], color: "#71C5D3" },
+                { range: [6, 7], color: "#59BBCB" },
+                { range: [7, 8], color: "#45B0C1" },
+                { range: [8, 9], color: "#269CAF" }
+            ],
+            threshold: {
+                line: { color: "purple", width: 8 },
+                thickness: 0.75,
+                value: freqMatch
+            }
+        }
+    }];
+
+    var layout3 = { width: 600, height: 500, margin: { t: 0, b: 0 } };
+    Plotly.newPlot('gauge', gaugeData, layout3);
+
 };
