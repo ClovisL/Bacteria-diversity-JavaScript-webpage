@@ -16,6 +16,27 @@ d3.json("data/samples.json").then((data) => {
       // corresponding value returned by the button
       .attr("value", function (d) { return d; })
 
+      
+    // Default metadata for the first option on the list
+    var defaultId = document.getElementById("selDataset").value;
+    var defaultSlice = groupMetadata[groupNames.indexOf(defaultId)];
+    idMatch = defaultId;
+    ethMatch = defaultSlice["ethnicity"];
+    genderMatch = defaultSlice["gender"];
+    ageMatch = defaultSlice["age"];
+    locMatch = defaultSlice["location"];
+    bbMatch = defaultSlice["bbtype"];
+    freqMatch = defaultSlice["wfreq"];
+    // Enter data into text box
+    let ele = document.getElementById("sample-metadata");
+    ele.innerHTML += "id: " + idMatch + "<br />";
+    ele.innerHTML += "ethnicity: " + ethMatch + "<br />";
+    ele.innerHTML += "gender: " + genderMatch + "<br />";
+    ele.innerHTML += "age: " + ageMatch + "<br />";
+    ele.innerHTML += "location: " + locMatch + "<br />";
+    ele.innerHTML += "bbtype: " + bbMatch + "<br />";
+    ele.innerHTML += "wfreq: " + freqMatch;
+
 
     // Plot
 
@@ -48,26 +69,6 @@ d3.json("data/samples.json").then((data) => {
         
 
 });
-
-// Default metadata for the first option on the list
-var defaultId = document.getElementById("selDataset").value;
-var defaultSlice = groupMetadata[groupNames.indexOf(defaultId)];
-idMatch = defaultId;
-ethMatch = defaultSlice["ethnicity"];
-genderMatch = defaultSlice["gender"];
-ageMatch = defaultSlice["age"];
-locMatch = defaultSlice["location"];
-bbMatch = defaultSlice["bbtype"];
-freqMatch = defaultSlice["wfreq"];
-// Enter data into text box
-let ele = document.getElementById("sample-metadata");
-ele.innerHTML += "id: " + idMatch + "<br />";
-ele.innerHTML += "ethnicity: " + ethMatch + "<br />";
-ele.innerHTML += "gender: " + genderMatch + "<br />";
-ele.innerHTML += "age: " + ageMatch + "<br />";
-ele.innerHTML += "location: " + locMatch + "<br />";
-ele.innerHTML += "bbtype: " + bbMatch + "<br />";
-ele.innerHTML += "wfreq: " + freqMatch;
 
 
 // Function for when an option is selected in the dropdownlist
