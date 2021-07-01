@@ -94,16 +94,18 @@ function optionChanged(boxId) {
     ele.innerHTML += "bbtype: " + bbMatch + "<br />";
     ele.innerHTML += "wfreq: " + freqMatch;
 
+    // Console log to test
+    console.log("Running code to update plot");
     // Update plot with new ID
     // Create the Traces
     var sample = groupSamples[index];
     var trace1 = {
-    x: sample["sample_values"].slice(0, 10).reverse(),
-    y: sample["otu_ids"].slice(0, 10).reverse().map(String),
-    text: sample["otu_labels"].slice(0, 10).reverse(),
-    name: "Bacteria Samples",
-    type: "bar",
-    orientation: "h",
+        x: sample["sample_values"].slice(0, 10).reverse(),
+        y: sample["otu_ids"].slice(0, 10).reverse().map(String),
+        text: sample["otu_labels"].slice(0, 10).reverse(),
+        name: "Bacteria Samples",
+        type: "bar",
+        orientation: "h",
     };
 
     // Create the data array for the plot
