@@ -42,6 +42,7 @@ d3.json("data/samples.json").then((data) => {
 
     // Plot for default option
 
+    // Bar plot
     // Create the Traces
     var defaultSample = groupSamples[groupNames.indexOf(defaultId)];
     var trace1 = {
@@ -64,6 +65,31 @@ d3.json("data/samples.json").then((data) => {
 
     // Plot the chart to a div tag with id "plot"
     Plotly.newPlot("bar", chartData, layout);
+
+
+    // Default bubble plot
+    var trace2 = {
+        x: defaultSample["otu_ids"].slice(0, 10).reverse().map(String),
+        y: defaultSample["sample_values"].slice(0, 10).reverse(),
+        text: defaultSample["otu_labels"].slice(0, 10).reverse(),
+        mode: 'markers',
+        marker: {
+            color: defaultSample["otu_ids"].slice(0, 10).reverse().map(String),
+            size: defaultSample["sample_values"].slice(0, 10).reverse()
+        }
+    };
+    
+    // Create data array for plot
+    var bubbleData = [trace2];
+    
+    // Define plot layout
+    var layout2 = {
+        showlegend: false,
+        xaxis:{"title": "OTU ID"}
+    };
+    
+    // Plot the chart to a div tag with id "bubble"
+    Plotly.newPlot("bubble", bubbleData, layout2);
 
     });
 
@@ -94,7 +120,7 @@ function optionChanged(boxId) {
     ele.innerHTML += "bbtype: " + bbMatch + "<br />";
     ele.innerHTML += "wfreq: " + freqMatch;
 
-    // Update plot with new ID
+    // Update bar plot with new ID
     // Create the Traces
     var sample = groupSamples[index];
     var trace1 = {
@@ -117,4 +143,29 @@ function optionChanged(boxId) {
 
     // Plot the chart to a div tag with id "plot"
     Plotly.newPlot("bar", chartData, layout);
+
+
+    // Bubble plot
+    var trace2 = {
+        x: sample["otu_ids"].slice(0, 10).reverse().map(String),
+        y: sample["sample_values"].slice(0, 10).reverse(),
+        text: sample["otu_labels"].slice(0, 10).reverse(),
+        mode: 'markers',
+        marker: {
+            color: sample["otu_ids"].slice(0, 10).reverse().map(String),
+            size: sample["sample_values"].slice(0, 10).reverse()
+        }
+    };
+    
+    // Create data array for plot
+    var bubbleData = [trace2];
+    
+    // Define plot layout
+    var layout2 = {
+        showlegend: false,
+        xaxis:{"title": "OTU ID"}
+    };
+    
+    // Plot the chart to a div tag with id "bubble"
+    Plotly.newPlot("bubble", bubbleData, layout2);
 };
