@@ -49,6 +49,7 @@ d3.json("data/samples.json").then((data) => {
     x: defaultSample["sample_values"].slice(0, 10).reverse(),
     y: defaultSample["otu_ids"].slice(0, 10).reverse().map(String),
     text: defaultSample["otu_labels"].slice(0, 10).reverse(),
+    title: "Top 10 Bacteria Cultures Found",
     name: "Bacteria Samples",
     type: "bar",
     orientation: "h",
@@ -72,6 +73,7 @@ d3.json("data/samples.json").then((data) => {
         x: defaultSample["otu_ids"].slice(0, 10).reverse().map(String),
         y: defaultSample["sample_values"].slice(0, 10).reverse(),
         text: defaultSample["otu_labels"].slice(0, 10).reverse(),
+        title: "Bacteria Cultures Per Sample",
         mode: 'markers',
         marker: {
             color: defaultSample["otu_ids"].slice(0, 10).reverse().map(String),
@@ -127,6 +129,7 @@ function optionChanged(boxId) {
         x: sample["sample_values"].slice(0, 10).reverse(),
         y: sample["otu_ids"].slice(0, 10).reverse().map(String),
         text: sample["otu_labels"].slice(0, 10).reverse(),
+        title: "Top 10 Bacteria Cultures Found",
         name: "Bacteria Samples",
         type: "bar",
         orientation: "h",
@@ -150,6 +153,7 @@ function optionChanged(boxId) {
         x: sample["otu_ids"].slice(0, 10).reverse().map(String),
         y: sample["sample_values"].slice(0, 10).reverse(),
         text: sample["otu_labels"].slice(0, 10).reverse(),
+        title: "Bacteria Cultures Per Sample",
         mode: 'markers',
         marker: {
             color: sample["otu_ids"].slice(0, 10).reverse().map(String),
