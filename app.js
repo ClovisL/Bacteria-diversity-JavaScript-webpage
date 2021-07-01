@@ -38,43 +38,37 @@ d3.json("data/samples.json").then((data) => {
     ele.innerHTML += "wfreq: " + freqMatch;
 
 
-    // Plot
+    // Plot for default option
 
-    // Slice the top 10 most observed
-    top10 = data.slice(0, 10);
-
-    // Reverse the array due to Plotly's defaults
-    top10 = top10.reverse();
-
-    //  Create the Traces
+    // Create the Traces
+    var defaultSample = samples[names.indexOf(defaultId)];
     var trace1 = {
-        x: data.samples.map(row => row.sample_values),
-        y: data.samples.map(row => row.otu_ids),
-        text: data.samples.map(row => row.otu_labels),
-        name: "Bacteria Samples",
-        type: "bar",
-        orientation: "h",
-      };
-    
-      // Create the data array for the plot
-      var chartData = [trace1];
-    
-      // Define the plot layout
-      var layout = {
-        title: "Top 10 Bacteria Cultures Found",
-        margin: {
-            l: 100,
-            r: 100,
-            t: 100,
-            b: 100
-        }
-      };
-    
-      // Plot the chart to a div tag with id "plot"
-      Plotly.newPlot("bar", chartData, layout);
-        
+    x: defaultSample["sample_values"].slice(0, 10).reverse(),
+    y: "OTU " + defaultSample["otu_ids"].slice(0, 10).reverse(),
+    text: defaultSample["otu_labels"].slice(0, 10).reverse(),
+    name: "Bacteria Samples",
+    type: "bar",
+    orientation: "h",
+    };
 
-});
+    // Create the data array for the plot
+    var chartData = [trace1];
+
+    // Define the plot layout
+    var layout = {
+    title: "Top 10 Bacteria Cultures Found",
+    margin: {
+        l: 250,
+        r: 250,
+        t: 50,
+        b: 50
+    }
+    };
+
+    // Plot the chart to a div tag with id "plot"
+    Plotly.newPlot("bar", chartData, layout);
+
+    });
 
 
 // Function for when an option is selected in the dropdownlist
