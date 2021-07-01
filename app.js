@@ -40,6 +40,12 @@ d3.json("data/samples.json").then((data) => {
 
     // Plot
 
+    // Slice the first 10 objects for plotting
+    data = data.slice(0, 10);
+
+    // Reverse the array due to Plotly's defaults
+    data = data.reverse();
+    
     //  Create the Traces
     var trace1 = {
         x: data.map(row => row.samples.otu_ids),
