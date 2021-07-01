@@ -40,12 +40,12 @@ d3.json("data/samples.json").then((data) => {
 
     // Plot
 
-    // Slice the first 10 objects for plotting
-    data = data.slice(0, 10);
+    // Slice the top 10 most observed
+    top10 = data.slice(0, 10);
 
     // Reverse the array due to Plotly's defaults
-    data = data.reverse();
-    
+    top10 = top10.reverse();
+
     //  Create the Traces
     var trace1 = {
         x: data.map(row => row.samples.otu_ids),
