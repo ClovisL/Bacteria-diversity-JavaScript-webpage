@@ -94,8 +94,6 @@ function optionChanged(boxId) {
     ele.innerHTML += "bbtype: " + bbMatch + "<br />";
     ele.innerHTML += "wfreq: " + freqMatch;
 
-    // Console log to test
-    console.log("Running code to update plot");
     // Update plot with new ID
     // Create the Traces
     var sample = groupSamples[index];
