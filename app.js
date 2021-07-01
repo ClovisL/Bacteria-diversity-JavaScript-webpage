@@ -48,9 +48,9 @@ d3.json("data/samples.json").then((data) => {
 
     //  Create the Traces
     var trace1 = {
-        x: data.map(row => row.samples.otu_ids),
-        y: data.map(row => row.samples.sample_values),
-        text: data.map(row => row.samples.otu_labels),
+        x: data.samples.map(row => row.otu_ids),
+        y: data.samples.map(row => row.sample_values),
+        text: data.samples.map(row => row.otu_labels),
         name: "Bacteria Samples",
         type: "bar",
         orientation: "h",
