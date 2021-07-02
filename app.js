@@ -46,7 +46,7 @@ d3.json("data/samples.json").then((data) => {
     // Create the Traces
     var defaultSample = groupSamples[groupNames.indexOf(defaultId)];
     var ylabels = []
-    defaultSample["otu_ids"].slice(0, 10).reverse().map(String).forEach(function (item, index) {
+    defaultSample["otu_ids"].slice(0, 10).reverse().map(String).forEach(function (item) {
         ylabels.push("OTU "+item);
     });
     var trace1 = {
@@ -160,7 +160,7 @@ function optionChanged(boxId) {
     // Create the Traces
     var sample = groupSamples[index];
     var ylabels = []
-    sample["otu_ids"].slice(0, 10).reverse().map(String).forEach(function (item, index) {
+    sample["otu_ids"].slice(0, 10).reverse().map(String).forEach(function (item) {
         ylabels.push("OTU "+item);
     });
     var trace1 = {
