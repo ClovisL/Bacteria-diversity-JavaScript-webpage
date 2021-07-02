@@ -159,6 +159,7 @@ function optionChanged(boxId) {
     // Update bar plot with new ID
     // Create the Traces
     var sample = groupSamples[index];
+    var ylabels = []
     sample["otu_ids"].slice(0, 10).reverse().map(String).forEach(function (item, index) {
         ylabels.push("OTU "+item);
     });
