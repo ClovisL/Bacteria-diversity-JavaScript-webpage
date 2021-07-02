@@ -45,9 +45,13 @@ d3.json("data/samples.json").then((data) => {
     // Bar plot
     // Create the Traces
     var defaultSample = groupSamples[groupNames.indexOf(defaultId)];
+    var ylabels = []
+    defaultSample["otu_ids"].slice(0, 10).reverse().map(String).forEach(function (item, index) {
+        ylabels.push("OTU "+item);
+    });
     var trace1 = {
     x: defaultSample["sample_values"].slice(0, 10).reverse(),
-    y: defaultSample["otu_ids"].slice(0, 10).reverse().map(String),
+    y: ylabels,
     text: defaultSample["otu_labels"].slice(0, 10).reverse(),
     title: "Top 10 Bacteria Cultures Found",
     name: "Bacteria Samples",
@@ -61,7 +65,6 @@ d3.json("data/samples.json").then((data) => {
     // Define the plot layout
     var layout = {
         title: "Top 10 Bacteria Cultures Found",
-        yaxis:{"type": "category", "title": "OTU ID"}
     };
 
     // Plot the chart to a div tag with id "plot"
@@ -156,9 +159,12 @@ function optionChanged(boxId) {
     // Update bar plot with new ID
     // Create the Traces
     var sample = groupSamples[index];
+    sample["otu_ids"].slice(0, 10).reverse().map(String).forEach(function (item, index) {
+        ylabels.push("OTU "+item);
+    });
     var trace1 = {
         x: sample["sample_values"].slice(0, 10).reverse(),
-        y: sample["otu_ids"].slice(0, 10).reverse().map(String),
+        y: ylabels,
         text: sample["otu_labels"].slice(0, 10).reverse(),
         title: "Top 10 Bacteria Cultures Found",
         name: "Bacteria Samples",
@@ -172,7 +178,6 @@ function optionChanged(boxId) {
     // Define the plot layout
     var layout = {
         title: "Top 10 Bacteria Cultures Found",
-        yaxis:{"type": "category", "title": "OTU ID"}
     };
 
     // Plot the chart to a div tag with id "plot"
