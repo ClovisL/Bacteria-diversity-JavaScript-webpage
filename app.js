@@ -104,7 +104,7 @@ d3.json("data/samples.json").then((data) => {
             type: "indicator",
             mode: "gauge",
         gauge: {
-            axis: { range: [null, 9] },
+            axis: { range: [null, 9], tickmode: "linear" },
             steps: [
                 { range: [0, 1], color: "#EBF3F5" },
                 { range: [1, 2], color: "#D5E7EA" },
@@ -219,7 +219,7 @@ function optionChanged(boxId) {
         type: "indicator",
         mode: "gauge",
         gauge: {
-            axis: { range: [null, 9] },
+            axis: { range: [null, 9], tickmode: "linear" },
             steps: [
                 { range: [0, 1], color: "#EBF3F5" },
                 { range: [1, 2], color: "#D5E7EA" },
